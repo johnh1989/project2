@@ -1,0 +1,35 @@
+<revenue>
+    <Division>
+        <DivisionName>yolo</DivisionName>
+        <DivisionNumber>4567</DivisionNumber>
+        <NumberOfEmployees>3456</NumberOfEmployees>
+        <TotalSales>34563.00</TotalSales>
+        <TotalCosts>345.00</TotalCosts>
+        <Profit>34218.00</Profits>
+        <CostPerEmployee>0.10</CostPerEmployee>
+    </Division>
+    <Division>
+        <DivisionName>swagger</DivisionName>
+        <DivisionNumber>0004</DivisionNumber>
+        <NumberOfEmployees>67777</NumberOfEmployees>
+        <TotalSales>6789.00</TotalSales>
+        <TotalCosts>456.00</TotalCosts>
+        <Profit>6333.00</Profits>
+        <CostPerEmployee>0.01</CostPerEmployee>
+    </Division>
+    <Quarter>2</Quarter>
+    <TotalDivisions>2</TotalDivisions>
+</revenue>
+<revenue>
+    <Division>
+        <DivisionName>robots</DivisionName>
+        <DivisionNumber>3452</DivisionNumber>
+        <NumberOfEmployees>3456</NumberOfEmployees>
+        <TotalSales>34.00</TotalSales>
+        <TotalCosts>2323.00</TotalCosts>
+        <Profit>-2289.00</Profits>
+        <CostPerEmployee>0.67</CostPerEmployee>
+    </Division>
+    <Quarter>4</Quarter>
+    <TotalDivisions>1</TotalDivisions>
+</revenue>

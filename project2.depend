@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1416382891 source:/home/doktor/Workspace/C++/project2/main.cpp
+	<iostream>
+	"revenue.hpp"
+	<cstring>
+	<string>
+	<fstream>
+	<iomanip>
+
+1416376726 /home/doktor/Workspace/C++/project2/revenue.h
+	<string>
+
+1416382891 /home/doktor/Workspace/C++/project2/revenue.hpp
+	<string>
+
