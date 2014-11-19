@@ -27,7 +27,7 @@ void writeToFile(Revenue*, int);
 int main()
 {
     char quit;
-    int totalRecords;
+    int totalRecords, quarter;
     Revenue* rev;
 
     cout << "Do you want to exit y/n: ";
@@ -41,6 +41,10 @@ int main()
     cin >> totalRecords;
     rev = new Revenue[totalRecords]; //create dynamic array
 
+    cout << "What quarter is this for: ";
+    cin >> quarter;
+    Revenue::setQuarter(quarter);
+
     /* can call right from main because we are passing pointers */
     collectData(rev, totalRecords);
     writeToFile(rev, Revenue::getTotalDivisions());
@@ -51,24 +55,20 @@ int main()
 }
 
 void collectData(Revenue* rev, const int index){
-    int quarter,
-        numOfDigits;
+    string name,
+           divnum;
 
-    cout << "What quarter is this for: ";
-    cin >> quarter;
-    Revenue::setQuarter(quarter);
+    int numOfEmp,
+        numOfDigits,
+        totalDivs;
+
+    double totalSales,
+           totalCosts;
+
+    bool isNumber = false;
+
 
     for (int x = 0; x < index;  x++){
-        string name,
-               divnum;
-
-        int numOfEmp,
-            totalDivs;
-
-        double totalSales,
-               totalCosts;
-
-        bool isNumber = false;
 
         cout << "Enter division name: ";
         cin >> name;
