@@ -48,7 +48,6 @@ int main()
     /* can call right from main because we are passing pointers */
     collectData(rev, totalRecords);
     writeToFile(rev, Revenue::getTotalDivisions());
-    cout << "Writing revenue records to cop2224_proj2.xml" << endl;
 
     delete[] rev; //clean up the allocated memory
     cin.get();
@@ -101,11 +100,14 @@ void collectData(Revenue* rev, const int index){
         rev[x].calcCostPerEmp();
 
         Revenue::setTotalDivisions((x+1)); // keeps an accurate count of divisions
-        cout << "Add another record? y/n";
-        cin >> addRecord;
-        addRecord = toupper(addRecord);
-        if(addRecord == 'N'){
-            break; //most graceful and readable way to get out if the user wants to quit
+
+        if (Revenue::getTotalDivisions() < index){ // if user hasn't entered every record they planned on
+            cout << "Add another record? y/n";     // give them the option to exit and save data anyway
+            cin >> addRecord;
+            addRecord = toupper(addRecord);
+            if(addRecord == 'N'){
+                break; //most graceful and readable way to get out if the user wants to quit
+            }
         }
     }
 }
@@ -135,6 +137,7 @@ bool checkDivNum(string valid_num){
 void writeToFile(Revenue* rev, const int newIndex){
     ofstream xml;
     xml.open("cop2224_proj2.xml", fstream::app);
+    cout << "Writing revenue records to cop2224_proj2.xml" << endl;
     xml << "<revenue>\n";
     for (int x = 0; x < newIndex; x++){
         xml << "    <Division>\n";
@@ -158,4 +161,3 @@ void writeToFile(Revenue* rev, const int newIndex){
     xml << "    <TotalDivisions>" << Revenue::getTotalDivisions() << "</TotalDivisions>\n";
     xml << "</revenue>\n";
 }
-
