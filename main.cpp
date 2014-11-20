@@ -72,12 +72,13 @@ void collectData(Revenue* rev, const int index){
     for (int x = 0; x < index;  x++){
 
         cout << "Enter division name: ";
-        cin >> name;
+        cin.ignore();
+        getline(cin, name);
         rev[x].setDivName(name);
 
         do{
             cout << "Enter division number: ";
-            cin >> divnum;
+            getline(cin, divnum);
             isNumber = checkDivNum(divnum);
             numOfDigits = get_num_of_digits(divnum);
             rev[x].setDivisionNum(divnum);
