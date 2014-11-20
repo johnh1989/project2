@@ -20,7 +20,7 @@ int Revenue::quarter = 1;
 
 void collectData(Revenue*, int);
 bool checkDivNum(string);
-int get_num_of_digits(string digits);
+int get_num_of_digits(string);
 void writeToFile(Revenue*, int);
 
 
@@ -48,6 +48,7 @@ int main()
     /* can call right from main because we are passing pointers */
     collectData(rev, totalRecords);
     writeToFile(rev, Revenue::getTotalDivisions());
+    cout << "Writing revenue records to cop2224_proj2.xml" << endl;
 
     delete[] rev; //clean up the allocated memory
     cin.get();
@@ -67,6 +68,7 @@ void collectData(Revenue* rev, const int index){
 
     bool isNumber = false;
 
+    char addRecord = 'Y';
 
     for (int x = 0; x < index;  x++){
 
@@ -99,6 +101,12 @@ void collectData(Revenue* rev, const int index){
         rev[x].calcCostPerEmp();
 
         Revenue::setTotalDivisions((x+1)); // keeps an accurate count of divisions
+        cout << "Add another record? y/n";
+        cin >> addRecord;
+        addRecord = toupper(addRecord);
+        if(addRecord == 'N'){
+            break; //most graceful and readable way to get out if the user wants to quit
+        }
     }
 }
 
