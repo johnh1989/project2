@@ -70,44 +70,42 @@ void collectData(Revenue* rev, const int index){
     char addRecord = 'Y';
 
     for (int x = 0; x < index;  x++){
+        if (addRecord != 'N'){
+            cout << "Enter division name: ";
+            cin.ignore();
+            getline(cin, name);
+            rev[x].setDivName(name);
 
-        cout << "Enter division name: ";
-        cin.ignore();
-        getline(cin, name);
-        rev[x].setDivName(name);
+            do{
+                cout << "Enter division number: ";
+                getline(cin, divnum);
+                isNumber = checkDivNum(divnum);
+                numOfDigits = get_num_of_digits(divnum);
+                rev[x].setDivisionNum(divnum);
+            }while(numOfDigits != 4 || isNumber == false);
 
-        do{
-            cout << "Enter division number: ";
-            getline(cin, divnum);
-            isNumber = checkDivNum(divnum);
-            numOfDigits = get_num_of_digits(divnum);
-            rev[x].setDivisionNum(divnum);
-        }while(numOfDigits != 4 || isNumber == false);
+            cout << "Enter number of employees: ";
+            cin >> numOfEmp;
+            rev[x].setNumOfEmp(numOfEmp);
 
-        cout << "Enter number of employees: ";
-        cin >> numOfEmp;
-        rev[x].setNumOfEmp(numOfEmp);
+            cout << "Enter the total sales: $";
+            cin >> totalSales;
+            rev[x].setTotalSales(totalSales);
 
-        cout << "Enter the total sales: $";
-        cin >> totalSales;
-        rev[x].setTotalSales(totalSales);
+            cout << "Enter the total costs: $";
+            cin >> totalCosts;
+            rev[x].setTotalCosts(totalCosts);
 
-        cout << "Enter the total costs: $";
-        cin >> totalCosts;
-        rev[x].setTotalCosts(totalCosts);
+            rev[x].calcProfits();
 
-        rev[x].calcProfits();
+            rev[x].calcCostPerEmp();
 
-        rev[x].calcCostPerEmp();
+            Revenue::setTotalDivisions((x+1)); // keeps an accurate count of divisions
 
-        Revenue::setTotalDivisions((x+1)); // keeps an accurate count of divisions
-
-        if (Revenue::getTotalDivisions() < index){ // if user hasn't entered every record they planned on
-            cout << "Add another record? y/n";     // give them the option to exit and save data anyway
-            cin >> addRecord;
-            addRecord = toupper(addRecord);
-            if(addRecord == 'N'){
-                break; //most graceful and readable way to get out if the user wants to quit
+            if (Revenue::getTotalDivisions() < index){ // if user hasn't entered every record they planned on
+                cout << "Add another record? y/n";     // give them the option to exit and save data anyway
+                cin >> addRecord;
+                addRecord = toupper(addRecord);
             }
         }
     }
